@@ -1,0 +1,25 @@
+comments:
+  AbsentOrWrongFileLicense:
+    active: false
+complexity:
+  LongMethod:
+    excludes: "**Test.kt"
+  TooManyFunctions:
+    active: false
+exceptions:
+  TooGenericExceptionCaught:
+    active: false
+formatting:
+  ArgumentListWrapping:
+    maxLineLength: 120
+    excludes: [ "**Test.kt" ]
+  CommentWrapping:
+    active: false
+  MaximumLineLength:
+    maxLineLength: 150
+style:
+  MagicNumber:
+    ignorePropertyDeclaration: true
+    ignoreLocalVariableDeclaration: true
+  MaxLineLength:
+    active: false
