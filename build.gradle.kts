@@ -38,6 +38,7 @@ kotlin {
 
     compilerOptions {
         freeCompilerArgs.add("-Xexplicit-api=strict")
+        freeCompilerArgs.add("-Xcontext-receivers")
     }
 }
 

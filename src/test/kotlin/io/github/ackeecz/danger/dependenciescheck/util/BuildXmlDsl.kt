@@ -61,7 +61,7 @@ private class XmlElementImpl(
                 </$name>
                 """.trimIndent()
             }
-            else -> "</$name>"
+            else -> "<$name/>"
         }
     }
 }
