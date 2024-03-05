@@ -1,0 +1,30 @@
+[versions]
+
+danger-kotlin-sdk = "1.2"
+detekt = "1.23.5"
+dokka = "1.9.10"
+jackson-xml = "2.16.1"
+jackson-kotlinModule = "2.16.1"
+kotest = "5.8.0"
+kotlin = "1.9.22"
+nexus-staging = "0.30.0"
+shadow = "8.1.1"
+
+[libraries]
+danger-kotlin-sdk = { module = "systems.danger:danger-kotlin-sdk", version.ref = "danger-kotlin-sdk" }
+
+detekt-formatting = { module = "io.gitlab.arturbosch.detekt:detekt-formatting", version.ref = "detekt" }
+
+jackson-xml = { module = "com.fasterxml.jackson.dataformat:jackson-dataformat-xml",  version.ref = "jackson-xml" }
+jackson-kotlinModule = { module = "com.fasterxml.jackson.module:jackson-module-kotlin",  version.ref = "jackson-kotlinModule" }
+
+kotest-assertions-core = { module = "io.kotest:kotest-assertions-core", version.ref = "kotest" }
+kotest-framework-engine = { module = "io.kotest:kotest-framework-engine", version.ref = "kotest" }
+kotest-runner-junit5 = { module = "io.kotest:kotest-runner-junit5", version.ref = "kotest" }
+
+[plugins]
+detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
+dokka = { id = "org.jetbrains.dokka", version.ref = "dokka" }
+kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+nexus-staging = { id = "io.codearte.nexus-staging", version.ref = "nexus-staging" }
+shadow = { id = "com.github.johnrengelman.shadow", version.ref = "shadow" }
