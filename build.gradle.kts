@@ -34,7 +34,7 @@ tasks.test {
     useJUnitPlatform()
 }
 kotlin {
-    jvmToolchain(20)
+    jvmToolchain(17)
 
     compilerOptions {
         freeCompilerArgs.add("-Xexplicit-api=strict")
