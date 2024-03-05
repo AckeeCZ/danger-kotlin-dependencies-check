@@ -7,6 +7,7 @@ import io.github.ackeecz.danger.dependenciescheck.model.xml.update.XmlOutdatedDe
 import io.github.ackeecz.danger.dependenciescheck.model.xml.update.XmlUpToDateDependency
 import io.github.ackeecz.danger.dependenciescheck.model.xml.vulnerability.XmlVulnerability
 import io.github.ackeecz.danger.dependenciescheck.model.xml.vulnerability.XmlVulnerabilityReportDependency
+import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.core.spec.style.FunSpec
 import io.kotest.matchers.collections.shouldContain
 import io.kotest.matchers.shouldBe
@@ -180,6 +181,10 @@ private fun FunSpec.testDependenciesUpdates() = context("dependencies updates") 
             this shouldContain secondNotDuplicatedOutdatedDependency.toOutdatedDependency()
         }
     }
+
+    test("throw exception there are no files") {
+        shouldThrow<IllegalArgumentException> { underTest.parseUpdates(emptyList()) }
+    }
 }
 
 private fun FunSpec.testVulnerabilities() = context("vulnerabilities") {
@@ -246,5 +251,9 @@ private fun FunSpec.testVulnerabilities() = context("vulnerabilities") {
 
         actual.dependencies.size shouldBe 1
         actual.dependencies shouldContain dependency.toVulnerableDependency()
+    }
+
+    test("throw exception there are no files") {
+        shouldThrow<IllegalArgumentException> { underTest.parseVulnerabilities(emptyList()) }
     }
 }

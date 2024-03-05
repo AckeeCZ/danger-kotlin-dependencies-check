@@ -2,7 +2,10 @@
 
 # danger-kotlin dependencies check plugin
 
-Plugin for [danger-kotlin](https://github.com/danger/kotlin) for checking project dependencies (e.g. new available updates or vulnerabilities)
+Plugin for [danger-kotlin](https://github.com/danger/kotlin) for checking project dependencies (e.g. new available updates or vulnerabilities). Plugin 
+relies on these Gradle plugins to be available on the project:
+* https://github.com/jeremylong/DependencyCheck
+* https://github.com/ben-manes/gradle-versions-plugin
 
 ## Installation
 

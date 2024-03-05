@@ -23,12 +23,20 @@ internal class ResponseElementBuilder(private val responseElement: XmlElement) {
         }
     }
 
+    fun emptyCurrentDependencies() {
+        currentDependencies {}
+    }
+
     fun outdatedDependencies(block: OutdatedDependenciesBuilder.() -> Unit) {
         responseElement.element("outdated") {
             element("dependencies") {
                 OutdatedDependenciesBuilder(this).apply(block)
             }
         }
+    }
+
+    fun emptyOutdatedDependencies() {
+        outdatedDependencies {}
     }
 }
 

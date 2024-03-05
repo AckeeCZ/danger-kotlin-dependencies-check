@@ -14,7 +14,8 @@ internal class FileParser {
     private val xmlMapper = XmlMapper().registerKotlinModule()
 
     fun parseUpdates(files: List<File>): DependenciesUpdateReport {
-        return files.map { file -> xmlMapper.readValue<XmlDependenciesUpdateReport>(file.inputStream()) }
+        return files.requireAtLeastOneFile()
+            .map { file -> xmlMapper.readValue<XmlDependenciesUpdateReport>(file.inputStream()) }
             .map { report ->
                 DependenciesUpdateReport(
                     outdatedDependencies = report.outdatedDependencies.dependencies.map {
@@ -36,6 +37,11 @@ internal class FileParser {
             .removeDuplicates()
     }
 
+    private fun List<File>.requireAtLeastOneFile(): List<File> {
+        require(isNotEmpty()) { "There has to be at least one file with report" }
+        return this
+    }
+
     private fun DependenciesUpdateReport.removeDuplicates(): DependenciesUpdateReport {
         return copy(
             outdatedDependencies = outdatedDependencies.distinct(),
@@ -44,7 +50,9 @@ internal class FileParser {
     }
 
     fun parseVulnerabilities(files: List<File>): VulnerabilitiesReport {
-        return files.asSequence().map { file -> xmlMapper.readValue<XmlVulnerabilitiesReport>(file.inputStream()) }
+        return files.requireAtLeastOneFile()
+            .asSequence()
+            .map { file -> xmlMapper.readValue<XmlVulnerabilitiesReport>(file.inputStream()) }
             .map { report ->
                 VulnerabilitiesReport(
                     dependencies = report.dependencies.map { it.toVulnerableDependency() },
