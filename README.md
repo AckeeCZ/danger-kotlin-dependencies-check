@@ -7,6 +7,11 @@ relies on these Gradle plugins to be available on the project:
 * https://github.com/jeremylong/DependencyCheck
 * https://github.com/ben-manes/gradle-versions-plugin
 
+Plugin runs Gradle tasks above, collects results and reports outdated dependencies as warnings and vulnerable
+dependencies as warnings if there is no update available, the dependency is transitive (update is unknown) or fails
+pipeline if there is a vulnerability and update to a newer version is available. All of this can be suppressed for
+cases such as false positives or other valid reasons.
+
 ## Installation
 
 Put
